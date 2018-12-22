@@ -185,8 +185,7 @@
 (defmethod compute-literal-value-error ((literal literal)
                                         (datatype node)
                                         string
-                                        &key (value string)
-                                             (warn-only-p nil))
+                                        &key (value string) (warn-only-p t))
   (unless warn-only-p
     (cerror (format nil "Use value ~S instead" value)
             'datatype-parse-error :thing string))
@@ -268,6 +267,11 @@
 
 (defmethod compute-literal-value ((literal literal)
                                   (datatype (eql !xsd:integer))
+                                  string)
+  (compute-literal-value-integer literal datatype string))
+
+(defmethod compute-literal-value ((literal literal)
+                                  (datatype (eql !xsd:nonNegativeInteger))
                                   string)
   (compute-literal-value-integer literal datatype string))
 
