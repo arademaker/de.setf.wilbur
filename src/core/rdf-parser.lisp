@@ -164,7 +164,7 @@
     :reader parser-harvest-namespaces-p)
    (db-class
     :initarg :db-class
-    :initform 'temporary-parser-db
+    :initform 'indexed-db ; 'temporary-parser-db
     :reader parser-db-class)
    (initial-state
     :initarg :initial-state
